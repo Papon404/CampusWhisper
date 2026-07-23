@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CampusWhisper - Share Without Being Seen</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!--NAVBAR-->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">CampusWhisper</div>
+
+      <button class="menu-btn" id="menuBtn">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#submit">Submit</a></li>
+        <li><a href="#board">Board</a></li>
+        <li><a href="#about">About</a></li>
+        <li>
+          <button id="darkModeBtn" class="dark-btn">Dark Mode</button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--HOME SECTION-->
+  <section id="home" class="home-section">
+    <div class="home-content">
+      <h1>CampusWhisper</h1>
+      <p class="tagline">Share Without Being Seen.</p>
+      <p class="intro">
+         CampusWhisper is an anonymous platform created for the students of
+        <b>IET BHADDAL TECHNICAL CAMPUS.</b> Share confessions, opinions,
+        suggestions and campus experiences while keeping your identity
+        completely private.
+      </p>
+
+      <div class="emoji-illustration">🤫</div>
+
+      <div class="home-buttons">
+        <a href="#submit" class="btn btn-primary">Share Confession</a>
+        <a href="#board" class="btn btn-outline">View Board</a>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>🙈 Anonymous Posting</h3>
+        <p>No account needed. Nobody knows who posted what.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🧾 Basic Sentiment Check</h3>
+        <p>Every post is quickly checked and marked Positive, Neutral or Negative.</p>
+      </div>
+      <div class="feature-box">
+        <h3>🔍 Search Posts</h3>
+        <p>Find old confessions using keywords in seconds.</p>
+      </div>
+      <div class="feature-box">
+        <h3>💾 Offline Storage</h3>
+        <p>Everything is saved right in your browser using Local Storage.</p>
+      </div>
+    </div>
+  </section>
+
+  <!--SUBMIT SECTION-->
+  <section id="submit" class="submit-section">
+    <h2>Submit a Confession</h2>
+    <p class="section-desc">Say whatever you want. Nobody will know it was you.</p>
+
+    <form id="confessionForm" class="confession-form">
+
+      <label for="category">Category</label>
+      <select id="category">
+        <option value="">-- Select Category --</option>
+        <option value="Confession">Confession</option>
+        <option value="Suggestion">Suggestion</option>
+        <option value="Complaint">Complaint</option>
+      </select>
+
+      <label for="department">Department</label>
+      <select id="department">
+        <option value="">-- Select Department --</option>
+        <option value="CSE">CSE</option>
+        <option value="ECE">ECE</option>
+        <option value="Civil">Civil</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="MBA">MBA</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="year">Year</label>
+      <select id="year">
+        <option value="">-- Select Year --</option>
+        <option value="1st Year">1st Year</option>
+        <option value="2nd Year">2nd Year</option>
+        <option value="3rd Year">3rd Year</option>
+        <option value="4th Year">4th Year</option>
+      </select>
+
+      <label for="message">Your Message</label>
+      <textarea id="message" rows="5" maxlength="500" placeholder="Type your confession here..."></textarea>
+      <p class="char-count" id="charCount">0 / 500 characters</p>
+
+      <p class="form-msg" id="formMsg"></p>
+
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-outline" id="resetBtn">Reset</button>
+      </div>
+
+    </form>
+  </section>
+
+  <!--CONFESSION BOARD SECTION-->
+  <section id="board" class="board-section">
+    <h2>Confession Board</h2>
+    <p class="section-desc">See what other students have shared.</p>
+
+    <div class="board-tools">
+      <input type="text" id="searchBox" placeholder="Search confessions...">
+
+      <div class="filter-buttons" id="filterButtons">
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Confession">Confession</button>
+        <button class="filter-btn" data-filter="Suggestion">Suggestion</button>
+        <button class="filter-btn" data-filter="Complaint">Complaint</button>
+      </div>
+    </div>
+
+    <div class="board-list" id="boardList">
+   
+    </div>
+
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">📭</div>
+      <p>No Confessions Available</p>
+    </div>
+  </section>
+
+  <!--ABOUT SECTION-->
+  <section id="about" class="about-section">
+    <h2>About This Platform</h2>
+    <div class="about-box">
+      <p>
+        CampusWhisper is a simple anonymous confession platform created
+        for the students of <b>IET BHADDAL TECHNICAL CAMPUS.</b>
+      </p>
+
+      <p>
+        It provides a safe and private space where students can freely
+        share confessions, suggestions and opinions without revealing
+        their identity.
+      </p>
+    </div>
+  </section>
+
+  <!--FOOTER-->
+  <footer class="footer">
+    <p class="footer-logo">CampusWhisper</p>
+    <p class="footer-tagline">Share Without Being Seen.</p>
+    <p class="footer-copy">&copy; 2026 CampusWhisper</p>
+    <p class="footer-dev">Developed by: Papon Ray</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
