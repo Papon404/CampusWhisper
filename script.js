@@ -1,4 +1,15 @@
+// ===============================
+// SUPABASE CONNECTION
+// ===============================
 
+var SUPABASE_URL = "https://hymjvaypzpgxdhowgbdd.supabase.co";
+
+var SUPABASE_KEY = "sb_publishable_6MxsFuOHZuT74xY0savo-Q_mnRGampB";
+
+var supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 // Words that show a positive feeling
 var positiveWords = [
@@ -30,7 +41,7 @@ var currentSearch = "";
 
 // ---------- Runs everything once the page has loaded ----------
 document.addEventListener("DOMContentLoaded", function () {
-  loadConfessionsFromStorage();
+  loadConfessionsFromSupabase();
   loadDarkModePreference();
 
   setupMenuButton();
@@ -45,24 +56,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//Load Confession from Supabase
 
-// LOCAL STORAGE FUNCTIONS
 
+async function loadConfessionsFromSupabase() {
+  var result = await supabaseClient
+    .from("confessions")
+    .select("*")
+    .order("created_at", { ascending: false });
 
-// Loads saved confessions from Local Storage into the confessions array
-function loadConfessionsFromStorage() {
-  var saved = localStorage.getItem("campuswhisper_confessions");
-
-  if (saved) {
-    confessions = JSON.parse(saved);
-  } else {
+  if (result.error) {
+    console.error("Error loading confessions:", result.error);
     confessions = [];
+    return;
   }
-}
 
-// Saves the current confessions array into Local Storage
-function saveConfessionsToStorage() {
-  localStorage.setItem("campuswhisper_confessions", JSON.stringify(confessions));
+  confessions = result.data || [];
+
+  displayConfessions();
 }
 
 
@@ -160,7 +171,7 @@ function setupFormSubmit() {
   });
 }
 
-function handleSubmit() {
+  async function handleSubmit() {
   var category = document.getElementById("category").value;
   var department = document.getElementById("department").value;
   var year = document.getElementById("year").value;
@@ -192,19 +203,32 @@ function handleSubmit() {
   }
 
   // Build the new confession object
-  var newConfession = {
-    id: Date.now(),
-    category: category,
-    department: department,
-    year: year,
-    message: message,
-    sentiment: result.sentiment,
-    date: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
-  };
+ var newConfession = {
+  category: category,
+  department: department,
+  year: year,
+  message: message,
+  sentiment: result.sentiment
+};
 
-  // Add it to the beginning of the array so newest shows first
-  confessions.unshift(newConfession);
-  saveConfessionsToStorage();
+var insertResult = await supabaseClient
+  .from("confessions")
+  .insert([newConfession])
+  .select()
+  .single();
+
+if (insertResult.error) {
+  console.error("Error submitting confession:", insertResult.error);
+
+  showFormMessage(
+    "Failed to submit confession. Please try again.",
+    "error"
+  );
+
+  return;
+}
+
+confessions.unshift(insertResult.data);
 
   showFormMessage("Confession submitted successfully!", "success");
 
