@@ -29,7 +29,7 @@ var abusiveWords = [
 ];
 
 // This array holds all the confessions.
-// It gets loaded from Local Storage when the page opens.
+// It gets loaded from Supabase when the page opens.
 var confessions = [];
 
 // This keeps track of which filter button is currently selected
@@ -40,8 +40,8 @@ var currentSearch = "";
 
 
 // ---------- Runs everything once the page has loaded ----------
-document.addEventListener("DOMContentLoaded", function () {
-  loadConfessionsFromSupabase();
+document.addEventListener("DOMContentLoaded", async function () {
+  await loadConfessionsFromSupabase();
   loadDarkModePreference();
 
   setupMenuButton();
@@ -73,7 +73,6 @@ async function loadConfessionsFromSupabase() {
 
   confessions = result.data || [];
 
-  displayConfessions();
 }
 
 
@@ -375,17 +374,8 @@ function createConfessionCard(item) {
     '<p class="card-message">' + escapeText(item.message) + '</p>' +
     '<div class="card-bottom">' +
       '<span>' + escapeText(item.department) + ' | ' + escapeText(item.year) + '</span>' +
-      '<span>' + escapeText(item.date) + '</span>' +
-    '</div>' +
-    '<div class="card-bottom" style="border-top:none; padding-top:0; justify-content:flex-end;">' +
-      '<button class="delete-btn" data-id="' + item.id + '">Delete</button>' +
+      '<span>' + escapeText(new Date(item.created_at).toLocaleString()) + '</span>' +
     '</div>';
-
-  // Attach the delete button click event
-  var deleteBtn = card.querySelector(".delete-btn");
-  deleteBtn.addEventListener("click", function () {
-    deleteConfession(item.id);
-  });
 
   return card;
 }
@@ -396,32 +386,6 @@ function escapeText(text) {
   div.textContent = text;
   return div.innerHTML;
 }
-
-
-
-// DELETING A CONFESSION
-
-
-function deleteConfession(id) {
-  var confirmDelete = confirm("Are you sure you want to delete this confession?");
-
-  if (!confirmDelete) {
-    return;
-  }
-
-  var newConfessions = [];
-
-  for (var i = 0; i < confessions.length; i++) {
-    if (confessions[i].id !== id) {
-      newConfessions.push(confessions[i]);
-    }
-  }
-
-  confessions = newConfessions;
-  saveConfessionsToStorage();
-  displayConfessions();
-}
-
 
 
 // SEARCH BOX
