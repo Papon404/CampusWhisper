@@ -515,31 +515,47 @@ function setupFilterButtons() {
   }
 }
       // FEATURE SUGGESTION FORM
-  document.getElementById("suggestionForm").addEventListener("submit", function (event) {
-    event.preventDefault();
+    document.getElementById("suggestionForm").addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    const suggestion = document.getElementById("suggestion").value.trim();
+      const suggestion = document.getElementById("suggestion").value.trim();
 
-    if (suggestion === "") {
-      alert("Please write your suggestion first.");
-      return;
-    }
+      if (suggestion === "") {
+        alert("Please write your suggestion first.");
+        return;
+      }
 
-    const email = "thepapon21@gmail.com";
-    const subject = encodeURIComponent("CampusWhisper Feature Suggestion");
-    const body = encodeURIComponent(suggestion);
+      const email = "thepapon21@gmail.com";
+      const subject = encodeURIComponent("CampusWhisper Feature Suggestion");
+      const body = encodeURIComponent(suggestion);
 
-    const gmailLink =
-      "https://mail.google.com/mail/?view=cm&fs=1" +
-      "&to=" + encodeURIComponent(email) +
-      "&su=" + subject +
-      "&body=" + body;
+      // Detect mobile devices
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    window.open(gmailLink, "_blank");
+      if (isMobile) {
+        // Try to open the phone's default email app
+        const mailtoLink =
+          "mailto:" + email +
+          "?subject=" + subject +
+          "&body=" + body;
 
+        window.location.href = mailtoLink;
+      } else {
+        // Open Gmail in the browser on PC
+        const gmailLink =
+          "https://mail.google.com/mail/?view=cm&fs=1" +
+          "&to=" + encodeURIComponent(email) +
+          "&su=" + subject +
+          "&body=" + body;
+
+        window.open(gmailLink, "_blank");
+      }
+
+      document.getElementById("suggestionForm").reset();
+    });
     // Clear the suggestion box
     document.getElementById("suggestionForm").reset();
-    });
+    
 
         // BACK TO TOP BUTTON
     var backToTopBtn = document.getElementById("backToTop");
