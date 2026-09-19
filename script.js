@@ -511,3 +511,29 @@ function setupFilterButtons() {
     });
   }
 }
+      // FEATURE SUGGESTION FORM
+  document.getElementById("suggestionForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const suggestion = document.getElementById("suggestion").value.trim();
+
+    if (suggestion === "") {
+      alert("Please write your suggestion first.");
+      return;
+    }
+
+    const email = "thepapon21@gmail.com";
+    const subject = encodeURIComponent("CampusWhisper Feature Suggestion");
+    const body = encodeURIComponent(suggestion);
+
+    const gmailLink =
+      "https://mail.google.com/mail/?view=cm&fs=1" +
+      "&to=" + encodeURIComponent(email) +
+      "&su=" + subject +
+      "&body=" + body;
+
+    window.open(gmailLink, "_blank");
+
+    // Clear the suggestion box
+    document.getElementById("suggestionForm").reset();
+    });

@@ -602,3 +602,37 @@ body.dark .about-box p {
     font-size: 32px;
   }
 }
+
+  /* FEATURE SUGGESTION SECTION */
+
+  .suggestion-section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .suggestion-form {
+    max-width: 600px;
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+  }
+
+  .suggestion-form label {
+    font-weight: 600;
+  }
+
+  .suggestion-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+
+  .suggestion-form button {
+    align-self: flex-start;
+  }
