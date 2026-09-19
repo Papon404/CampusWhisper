@@ -13,19 +13,107 @@ var supabaseClient = window.supabase.createClient(
 
 // Words that show a positive feeling
 var positiveWords = [
+  // General positive words
   "good", "great", "excellent", "awesome", "nice", "happy",
-  "love", "helpful", "thank", "best", "amazing", "proud"
+  "love", "helpful", "thank", "thanks", "best", "amazing",
+  "wonderful", "fantastic", "perfect", "brilliant", "superb",
+  "outstanding", "beautiful", "enjoy", "enjoyed", "enjoyable",
+  "satisfied", "satisfaction", "positive", "pleasant", "delightful",
+  "impressive", "incredible", "exceptional", "valuable", "useful",
+  "remarkable", "marvelous", "terrific", "fabulous", "splendid",
+  "phenomenal", "magnificent", "awesome",
+
+  // Appreciation and gratitude
+  "appreciate", "appreciated", "appreciation", "grateful",
+  "gratitude", "thankful", "respect", "respected", "respectful",
+  "supportive", "kind", "kindness", "caring", "friendly",
+  "generous", "cooperative", "understanding", "encouraging",
+  "inspiring", "inspiration", "motivating", "motivated",
+  "welcoming", "polite", "considerate", "compassionate",
+
+  // Positive emotions
+  "joy", "joyful", "excited", "exciting", "pleased", "proud",
+  "confidence", "confident", "comfortable", "peaceful", "relaxed",
+  "hopeful", "optimistic", "cheerful", "glad", "delighted",
+  "thrilled", "lovely", "fun", "funny", "lucky", "relieved",
+  "content", "enthusiastic", "passionate", "inspired",
+
+  // Academic and campus-related positives
+  "improve", "improved", "improvement", "progress", "successful",
+  "success", "achieved", "achievement", "learned", "knowledgeable",
+  "effective", "efficient", "organized", "clean", "safe",
+  "accessible", "affordable", "well-maintained", "well-equipped",
+  "well-organized", "well-managed", "good teaching",
+  
 ];
 
 // Words that show a negative feeling
 var negativeWords = [
+  // General negative words
   "bad", "worst", "poor", "hate", "boring", "annoying",
-  "angry", "sad", "terrible", "disappointed", "useless"
+  "angry", "sad", "terrible", "disappointed", "useless",
+  "awful", "horrible", "disgusting", "unacceptable", "pathetic",
+  "ridiculous", "frustrating", "frustrated", "irritating",
+  "irritated", "unhappy", "unpleasant", "negative", "regret",
+  "regretful", "dissatisfied", "dissatisfaction", "inferior",
+  "inadequate", "incompetent", "careless", "irresponsible",
+  "disgusted", "annoyed", "mediocre", "unsatisfactory",
+  "disappointing", "disaster", "disastrous", "failure",
+  "failed", "fail", "broken", "problematic", "troublesome",
+
+  // Stress and emotional difficulties
+  "stress", "stressed", "stressful", "anxiety", "anxious",
+  "depressed", "depressing", "exhausted", "tired", "fatigued",
+  "overwhelmed", "worried", "worry", "fear", "scared",
+  "frightened", "upset", "lonely", "helpless", "hopeless",
+  "miserable", "suffer", "suffering", "struggling", "struggle",
+  "burnout", "burned out", "burnt out", "pressure",
+  "mental pressure", "disheartened", "demotivated",
+  "discouraged", "confused", "confusing", "uncomfortable",
+  "disturbed", "frustration", "panic", "panicked",
+  "irritation", "helplessness", "disappointed", "disappointment",
+  "overloaded", "drained", "emotionally drained",
+
+  // Academic complaints
+  "difficult", "difficulty", "hard", "complicated",
+  "unfair", "unjust", "biased", "bias", "favoritism",
+  "discrimination", "unreasonable", "unprepared", "unhelpful",
+  "unprofessional", "unorganized", "disorganized",
+  "mismanagement", "mismanaged", "waste", "wasted",
+  "wasting", "overburdened", "excessive", "unnecessary",
+  "unproductive", "ineffective", "inefficient", "incomplete",
+  "delayed", "delay", "cancelled", "canceled", "unreliable",
+  "inconsistent",
+
+  // Campus facilities
+  "dirty", "unclean", "unsafe", "damaged", "overcrowded",
+  "crowded", "unhygienic",
+  // Faculty and administration
+  "rude", "arrogant", "disrespectful","unresponsive", "unapproachable",
+  "uncooperative", "misleading", "miscommunication",
+  "poor communication", "ignored",
+  "neglected", "unresolved",
 ];
 
 // Words that are not allowed at all
 var abusiveWords = [
-  "idiot", "stupid", "fool", "damn", "shut up", "moron"
+  // Common insults
+  "idiot", "idiots", "stupid", "fool", "fools",
+  "moron", "morons", "dumbass", "dumb", "loser",
+  "losers", "jerk", "jerks", "clown", "clowns",
+  "imbecile", "imbeciles", "nonsense",
+
+  // Rude and disrespectful language
+  "shut up", "shut your mouth", "get lost",
+  "screw you", "screw off", "piss off",
+  "go to hell", "piece of trash", "piece of garbage",
+  "worthless", "pathetic loser", "disgusting person",
+
+  // Profanity
+  "damn", "dammit", "hell", "crap", "shit",
+  "bullshit", "fuck", "fucking", "fucked",
+  "motherfucker", "bastard", "bitch", "asshole",
+  "arsehole", "dickhead", "prick", "douchebag",
 ];
 
 // This array holds all the confessions.
