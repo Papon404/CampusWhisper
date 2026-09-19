@@ -392,6 +392,9 @@ function checkSentiment(message) {
 
 function displayConfessions() {
   var boardList = document.getElementById("boardList");
+  // Update total confession counter
+  document.getElementById("confessionCounter").textContent =
+  "💬 Total Confessions: " + confessions.length;
   var emptyState = document.getElementById("emptyState");
 
   // Get the confessions that match the current filter and search text
@@ -536,4 +539,36 @@ function setupFilterButtons() {
 
     // Clear the suggestion box
     document.getElementById("suggestionForm").reset();
+    });
+
+        // BACK TO TOP BUTTON
+    var backToTopBtn = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = "block";
+      } else {
+        backToTopBtn.style.display = "none";
+      }
+    });
+
+    backToTopBtn.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+        // SUGGESTION CHARACTER COUNTER
+    var suggestionBox = document.getElementById("suggestion");
+    var suggestionCharCount = document.getElementById("suggestionCharCount");
+
+    suggestionBox.addEventListener("input", function () {
+      suggestionCharCount.textContent =
+        "Characters: " + suggestionBox.value.length + " / 1000";
+    });
+
+    // Reset counter when the form is reset
+    document.getElementById("suggestionForm").addEventListener("reset", function () {
+      suggestionCharCount.textContent = "Characters: 0 / 1000";
     });

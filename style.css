@@ -636,3 +636,41 @@ body.dark .about-box p {
   .suggestion-form button {
     align-self: flex-start;
   }
+
+  /* BACK TO TOP BUTTON */
+.back-to-top {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background-color: #2563EB;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.back-to-top:hover {
+  background-color: #1D4ED8;
+}
+
+/* CONFESSION COUNTER */
+.confession-counter {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 12px 0 20px;
+  color: #2563EB;
+}
+
+/* SUGGESTION CHARACTER COUNTER */
+.suggestion-char-count {
+  font-size: 12px;
+  color: #64748B;
+  text-align: right;
+  margin-top: -4px;
+}

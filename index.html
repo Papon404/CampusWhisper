@@ -62,8 +62,8 @@
         <p>Find old confessions using keywords in seconds.</p>
       </div>
       <div class="feature-box">
-        <h3>💾 Offline Storage</h3>
-        <p>Everything is saved right in your browser using Local Storage.</p>
+      <h3>☁️ Cloud Storage</h3>
+      <p>Confessions are stored securely in the cloud using Supabase and can be viewed by everyone.</p>
       </div>
     </div>
   </section>
@@ -121,6 +121,9 @@
   <section id="board" class="board-section">
     <h2>Confession Board</h2>
     <p class="section-desc">See what other students have shared.</p>
+    <p id="confessionCounter" class="confession-counter">
+  💬 Total Confessions: 0
+    </p>
 
     <div class="board-tools">
       <input type="text" id="searchBox" placeholder="Search confessions...">
@@ -178,8 +181,11 @@
         rows="4"
         maxlength="1000"
         placeholder="Tell us what feature you would like to see..."
-        required
-      ></textarea>
+        required>
+      </textarea>
+      <p id="suggestionCharCount" class="suggestion-char-count">
+        Characters: 0 / 1000
+      </p>
 
       <button type="submit" class="btn btn-primary">
         Send Suggestion
@@ -187,6 +193,11 @@
 
     </form>
   </section>
+
+      <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" class="back-to-top" title="Back to Top">
+      ↑
+    </button>
 
   <!--FOOTER-->
   <footer class="footer">
